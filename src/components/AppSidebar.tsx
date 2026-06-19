@@ -60,6 +60,13 @@ type NavGroup = {
 
 const NAV_GROUPS: NavGroup[] = [
   {
+    label: "AI Showcase",
+    items: [
+      { title: "AI Lab", url: "/ai-lab", icon: Sparkles, feature: "ai_insights" },
+      { title: "About this Demo", url: "/about-this-demo", icon: LifeBuoy, feature: "ai_insights" },
+    ],
+  },
+  {
     label: "Monitor",
     items: [
       { title: "Unified Inbox", url: "/dashboard", icon: Inbox, feature: "inbox" },
