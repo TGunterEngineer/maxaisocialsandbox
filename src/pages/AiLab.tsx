@@ -300,7 +300,7 @@ function InsightsAgent() {
 
 export default function AiLab() {
   return (
-    <DashboardLayout>
+    <DashboardLayout title="AI Lab">
       <PageSEO title="AI Lab — Live AI Demos" description="Streaming reply composer, RAG chat over customer reviews, and a tool-calling insights agent." />
       <div className="space-y-4 max-w-6xl">
         <div className="flex items-start gap-3">

@@ -7,7 +7,7 @@ import { Sparkles, MessageSquare, Wrench, Database, ShieldCheck, Zap } from "luc
 
 export default function AboutDemo() {
   return (
-    <DashboardLayout>
+    <DashboardLayout title="About this demo">
       <PageSEO title="About this demo" description="How this AI-powered reputation platform was built." />
       <div className="max-w-3xl space-y-6">
         <div>
