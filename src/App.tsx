@@ -44,6 +44,8 @@ const Refunds = lazy(() => import("./pages/legal/Refunds.tsx"));
 const SmsConsent = lazy(() => import("./pages/legal/SmsConsent.tsx"));
 const SmsCompliance = lazy(() => import("./pages/SmsCompliance.tsx"));
 const ReviewSources = lazy(() => import("./pages/ReviewSources.tsx"));
+const AiLab = lazy(() => import("./pages/AiLab.tsx"));
+const AboutDemo = lazy(() => import("./pages/AboutDemo.tsx"));
 
 const PageFallback = () => (
   <div className="flex min-h-screen items-center justify-center">
@@ -102,6 +104,8 @@ const App = () => (
                       <Route path="/webhooks" element={<Webhooks />} />
                       <Route path="/sms-compliance" element={<SmsCompliance />} />
                       <Route path="/review-sources" element={<ReviewSources />} />
+                      <Route path="/ai-lab" element={<AiLab />} />
+                      <Route path="/about-this-demo" element={<AboutDemo />} />
                       <Route path="/super-admin" element={<SuperAdmin />} />
                       <Route path="/super-admin/demo" element={<SuperAdminDemo />} />
                       <Route path="/invite/:token" element={<AcceptInvite />} />
