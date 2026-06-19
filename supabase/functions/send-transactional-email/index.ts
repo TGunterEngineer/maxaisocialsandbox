@@ -129,7 +129,9 @@ Deno.serve(async (req) => {
 
   // ---- Authorization gate ----------------------------------------------------
   // Determine whether the caller is the service role (server-to-server) or a
-  // regular authenticated user. The service role JWT carries role=service_role.
+  // regular authenticated user. Never trust unverified JWT claims — for user
+  // tokens we cryptographically validate the signature via Supabase Auth
+  // before reading the subject.
   const authHeader = req.headers.get('Authorization') || ''
   const jwt = authHeader.replace(/^Bearer\s+/i, '')
   let isServiceRole = false
@@ -138,15 +140,20 @@ Deno.serve(async (req) => {
     if (jwt === supabaseServiceKey) {
       isServiceRole = true
     } else {
-      try {
-        const payloadJson = JSON.parse(atob(jwt.split('.')[1] || ''))
-        if (payloadJson?.role === 'service_role') isServiceRole = true
-        else if (payloadJson?.sub) callerUserId = payloadJson.sub
-      } catch {
-        // ignore — treated as unauthenticated below
+      // Verify the JWT signature with Supabase Auth — this rejects forged
+      // tokens (e.g. an attacker-crafted `{"role":"service_role"}` payload).
+      const supabaseAnonKey = Deno.env.get('SUPABASE_ANON_KEY') || ''
+      const authClient = createClient(supabaseUrl, supabaseAnonKey)
+      const { data: userData, error: userError } = await authClient.auth.getUser(jwt)
+      if (!userError && userData?.user?.id) {
+        callerUserId = userData.user.id
       }
+      // Note: real service-role calls use the static service key path above.
+      // We deliberately do NOT honor a `role: service_role` claim from a
+      // user-issued JWT, since that field can only be trusted on the static key.
     }
   }
+
 
   if (!isServiceRole) {
     if (!callerUserId) {
