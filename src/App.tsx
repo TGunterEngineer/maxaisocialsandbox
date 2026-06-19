@@ -10,6 +10,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { AppModeProvider } from "@/contexts/AppModeContext";
 import { SandboxBanner } from "@/components/SandboxBanner";
+import { DemoBanner } from "@/components/DemoBanner";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { Loader2 } from "lucide-react";
 
@@ -71,6 +72,7 @@ const App = () => (
                 <Sonner />
                 <BrowserRouter>
                   <AppModeProvider>
+                  <DemoBanner />
                   <SandboxBanner />
                   <Suspense fallback={<PageFallback />}>
                     <Routes>
