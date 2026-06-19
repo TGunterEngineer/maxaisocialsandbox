@@ -118,6 +118,7 @@ const App = () => (
                       <Route path="/refund-policy" element={<Refunds />} />
                       <Route path="/cancellation-policy" element={<Refunds />} />
                       <Route path="/sms-consent" element={<SmsConsent />} />
+                      <Route path="/guides/reputation-management-for-local-business" element={<ReputationManagementGuide />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </Suspense>
