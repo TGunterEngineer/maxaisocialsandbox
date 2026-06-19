@@ -159,7 +159,7 @@ export function AppSidebar() {
             <SidebarGroupContent>
               <SidebarMenu>
                 {group.items.map((item) => {
-                  const unlocked = planIncludes(planTier, item.feature);
+                  const unlocked = true; // Demo mode: all features unlocked
                   if (unlocked) {
                     return (
                       <SidebarMenuItem key={item.title}>
