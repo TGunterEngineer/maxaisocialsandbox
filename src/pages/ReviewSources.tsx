@@ -55,6 +55,7 @@ export default function ReviewSources() {
   const [name, setName] = useState("");
   const [creating, setCreating] = useState(false);
   const [developerMode, setDeveloperMode] = useState(false);
+  const [newlyCreatedKey, setNewlyCreatedKey] = useState<{ id: string; key: string } | null>(null);
 
   const { data: keys, isLoading } = useQuery({
     queryKey: ["review_ingest_keys", organizationId],
@@ -74,12 +75,19 @@ export default function ReviewSources() {
     if (!organizationId || !user) return;
     if (!name.trim()) { toast.error("Name required"); return; }
     setCreating(true);
-    const { error } = await supabase.from("review_ingest_keys").insert({
-      organization_id: organizationId, name: name.trim().slice(0, 100), created_by: user.id,
+    const { data, error } = await supabase.rpc("create_review_ingest_key", {
+      _org_id: organizationId,
+      _name: name.trim().slice(0, 100),
     });
     setCreating(false);
     if (error) { toast.error(error.message); return; }
-    toast.success("Ingest key created");
+    const row = Array.isArray(data) ? data[0] : data;
+    if (row?.key) {
+      setNewlyCreatedKey({ id: row.id, key: row.key });
+      toast.success("Ingest key created — copy it now, it won't be shown again");
+    } else {
+      toast.success("Ingest key created");
+    }
     setName("");
     qc.invalidateQueries({ queryKey: ["review_ingest_keys", organizationId] });
   };
@@ -88,8 +96,10 @@ export default function ReviewSources() {
     const { error } = await supabase.from("review_ingest_keys").delete().eq("id", id);
     if (error) { toast.error(error.message); return; }
     toast.success("Key revoked");
+    if (newlyCreatedKey?.id === id) setNewlyCreatedKey(null);
     qc.invalidateQueries({ queryKey: ["review_ingest_keys", organizationId] });
   };
+
 
   const copy = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -223,26 +233,36 @@ export default function ReviewSources() {
                   ) : (keys?.length ?? 0) === 0 ? (
                     <p className="text-sm text-muted-foreground">No ingest keys yet.</p>
                   ) : (
-                    keys!.map((k) => (
-                      <div key={k.id} className="flex items-center gap-2 rounded-md border bg-card p-3">
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2">
-                            <span className="font-medium text-sm">{k.name}</span>
-                            {!k.is_active && <Badge variant="outline" className="text-[10px]">Inactive</Badge>}
+                    keys!.map((k) => {
+                      const isJustCreated = newlyCreatedKey?.id === k.id;
+                      const displayValue = isJustCreated
+                        ? newlyCreatedKey!.key
+                        : `${k.key_prefix}${"•".repeat(24)}`;
+                      return (
+                        <div key={k.id} className="flex items-center gap-2 rounded-md border bg-card p-3">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2">
+                              <span className="font-medium text-sm">{k.name}</span>
+                              {!k.is_active && <Badge variant="outline" className="text-[10px]">Inactive</Badge>}
+                              {isJustCreated && <Badge className="text-[10px]">Copy now — shown once</Badge>}
+                            </div>
+                            <code className="text-[11px] text-muted-foreground break-all">{displayValue}</code>
+                            {k.last_used_at && (
+                              <p className="text-[11px] text-muted-foreground mt-0.5">Last used {new Date(k.last_used_at).toLocaleString()}</p>
+                            )}
                           </div>
-                          <code className="text-[11px] text-muted-foreground break-all">{k.key}</code>
-                          {k.last_used_at && (
-                            <p className="text-[11px] text-muted-foreground mt-0.5">Last used {new Date(k.last_used_at).toLocaleString()}</p>
+                          {isJustCreated && (
+                            <Button size="sm" variant="ghost" onClick={() => copy(newlyCreatedKey!.key)}><Copy className="h-3.5 w-3.5" /></Button>
+                          )}
+                          {canManageTeam && (
+                            <Button size="sm" variant="ghost" onClick={() => revokeKey(k.id)}>
+                              <Trash2 className="h-3.5 w-3.5 text-destructive" />
+                            </Button>
                           )}
                         </div>
-                        <Button size="sm" variant="ghost" onClick={() => copy(k.key)}><Copy className="h-3.5 w-3.5" /></Button>
-                        {canManageTeam && (
-                          <Button size="sm" variant="ghost" onClick={() => revokeKey(k.id)}>
-                            <Trash2 className="h-3.5 w-3.5 text-destructive" />
-                          </Button>
-                        )}
-                      </div>
-                    ))
+                      );
+                    })
+
                   )}
                 </div>
               </CardContent>

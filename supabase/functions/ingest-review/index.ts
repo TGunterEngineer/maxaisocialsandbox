@@ -26,13 +26,23 @@ Deno.serve(async (req) => {
   const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
   const admin = createClient(supabaseUrl, serviceKey);
 
+  // Lookup by SHA-256 hash of the supplied key — plaintext keys are never stored.
+  const hashBuffer = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(ingestKey),
+  );
+  const keyHash = Array.from(new Uint8Array(hashBuffer))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+
   const { data: keyRow, error: keyErr } = await admin
     .from("review_ingest_keys")
     .select("id, organization_id, is_active")
-    .eq("key", ingestKey)
+    .eq("key_hash", keyHash)
     .maybeSingle();
 
   if (keyErr || !keyRow || !keyRow.is_active) return bad(401, "Invalid ingest key");
+
 
   // Per-key rate limit: 600 requests / minute (each request can carry multiple reviews).
   const { data: rlOk } = await admin.rpc("check_rate_limit", {
