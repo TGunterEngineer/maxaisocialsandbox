@@ -18,7 +18,7 @@ export function DashboardLayout({ title, children }: DashboardLayoutProps) {
             <SidebarTrigger aria-label="Toggle navigation sidebar" />
             <h1 className="text-lg font-semibold text-brand-gradient">{title}</h1>
             <div className="ml-auto">
-              <NotificationBell aria-label="Open notifications" />
+              <NotificationBell />
             </div>
           </header>
           <main className="flex-1 p-6 overflow-auto">{children}</main>
