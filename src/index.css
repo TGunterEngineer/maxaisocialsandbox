@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Maximum Social — dark #0a0a0f surfaces with emerald → cyan brand */
+    /* #0a0a0f ≈ hsl(240 22% 5%) */
+    --background: 240 22% 5%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 18% 7%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 18% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Emerald-400 ≈ hsl(152 76% 56%) */
+    --primary: 152 76% 56%;
+    --primary-foreground: 240 22% 5%;
+
+    --secondary: 240 10% 14%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 10% 12%;
+    --muted-foreground: 240 5% 65%;
+
+    /* Cyan-400 ≈ hsl(187 92% 56%) */
+    --accent: 187 92% 56%;
+    --accent-foreground: 240 22% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 10% 18%;
+    --input: 240 10% 16%;
+    --ring: 152 76% 56%;
+
+    --radius: 0.5rem;
+
+    --star: 42 95% 60%;
+    --star-empty: 240 8% 28%;
+
+    --success: 152 76% 50%;
+    --success-foreground: 240 22% 5%;
+
+    /* Brand gradient + glows used across the app */
+    --gradient-brand: linear-gradient(90deg, hsl(152 76% 56%), hsl(187 92% 56%));
+    --gradient-brand-soft: linear-gradient(135deg, hsl(152 76% 56% / 0.15), hsl(187 92% 56% / 0.15));
+    --shadow-brand: 0 0 60px -15px hsl(152 76% 50% / 0.45);
+
+    --sidebar-background: 240 22% 4%;
+    --sidebar-foreground: 240 5% 88%;
+    --sidebar-primary: 152 76% 56%;
+    --sidebar-primary-foreground: 240 22% 5%;
+    --sidebar-accent: 240 10% 12%;
+    --sidebar-accent-foreground: 152 76% 56%;
+    --sidebar-border: 240 10% 14%;
+    --sidebar-ring: 152 76% 56%;
+
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  .dark {
+    --background: 240 22% 5%;
+    --foreground: 0 0% 98%;
+    --card: 240 18% 7%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 18% 7%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 152 76% 56%;
+    --primary-foreground: 240 22% 5%;
+    --secondary: 240 10% 14%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 10% 12%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 187 92% 56%;
+    --accent-foreground: 240 22% 5%;
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 10% 18%;
+    --input: 240 10% 16%;
+    --ring: 152 76% 56%;
+    --sidebar-background: 240 22% 4%;
+    --sidebar-foreground: 240 5% 88%;
+    --sidebar-primary: 152 76% 56%;
+    --sidebar-primary-foreground: 240 22% 5%;
+    --sidebar-accent: 240 10% 12%;
+    --sidebar-accent-foreground: 152 76% 56%;
+    --sidebar-border: 240 10% 14%;
+    --sidebar-ring: 152 76% 56%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Brand gradient text + button helpers usable anywhere */
+  .text-brand-gradient {
+    background-image: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-brand-gradient {
+    background-image: var(--gradient-brand);
+  }
+  .shadow-brand {
+    box-shadow: var(--shadow-brand);
+  }
+}
