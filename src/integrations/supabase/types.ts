@@ -833,7 +833,8 @@ export type Database = {
           created_by: string
           id: string
           is_active: boolean
-          key: string
+          key_hash: string
+          key_prefix: string
           last_used_at: string | null
           name: string
           organization_id: string
@@ -843,7 +844,8 @@ export type Database = {
           created_by: string
           id?: string
           is_active?: boolean
-          key?: string
+          key_hash: string
+          key_prefix: string
           last_used_at?: string | null
           name: string
           organization_id: string
@@ -853,7 +855,8 @@ export type Database = {
           created_by?: string
           id?: string
           is_active?: boolean
-          key?: string
+          key_hash?: string
+          key_prefix?: string
           last_used_at?: string | null
           name?: string
           organization_id?: string
@@ -1484,6 +1487,16 @@ export type Database = {
       create_organization: {
         Args: { _name: string; _primary_color?: string }
         Returns: string
+      }
+      create_review_ingest_key: {
+        Args: { _name: string; _org_id: string }
+        Returns: {
+          created_at: string
+          id: string
+          key: string
+          key_prefix: string
+          name: string
+        }[]
       }
       create_webhook_endpoint: {
         Args: {
