@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { PageSEO } from "@/components/PageSEO";
+
 import { Link, useNavigate } from "react-router-dom";
 import {
   ArrowRight,
@@ -120,6 +122,12 @@ export default function Landing() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white overflow-x-hidden">
+      <PageSEO
+        title="Reputation & customer engagement for local businesses"
+        description="Monitor reviews, request more 5-stars, route bad ratings privately, and grow with AI-powered SMS, email, and content campaigns."
+        path="/landing"
+      />
+
       {/* Background accents */}
       <div className="pointer-events-none fixed inset-0 -z-10">
         <div className="absolute top-0 left-1/4 h-[500px] w-[500px] rounded-full bg-emerald-500/10 blur-[120px]" />

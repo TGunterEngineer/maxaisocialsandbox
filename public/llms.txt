@@ -1,0 +1,17 @@
+# Maximum Social
+
+> Reputation and customer engagement platform for local businesses: AI review replies, smart rating routing, SMS/email campaigns, and content publishing — built as a full-stack AI portfolio demo.
+
+## Pages
+
+- [Landing](/landing): Product overview, features, and pricing.
+- [Interactive demo](/demo): Sign in to a shared demo workspace seeded with realistic data.
+- [About this demo](/about-this-demo): How the app was built, where the AI lives, and the stack used.
+
+## Legal
+
+- [Terms of Service](/terms): Terms governing use of Maximum Social.
+- [Privacy Policy](/privacy): How user and customer data is handled.
+- [Refund & Cancellation Policy](/refunds): Subscription billing, cancellation, and refund rules.
+- [SMS Consent & TCPA Disclosure](/sms-consent): SMS program disclosures and consent.
+- [SMS Compliance](/sms-compliance): A2P 10DLC and carrier compliance details.

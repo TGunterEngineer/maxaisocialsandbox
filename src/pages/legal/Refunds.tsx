@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
+import { PageSEO } from "@/components/PageSEO";
 
 export default function Refunds() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <PageSEO
+        title="Refund & Cancellation Policy"
+        description="Subscription billing, cancellation, and refund rules for Maximum Social monthly and annual plans."
+        path="/refunds"
+      />
       <div className="max-w-3xl mx-auto px-6 py-12 prose prose-invert prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary">
         <Link to="/" className="text-sm text-primary hover:underline">← Back</Link>
+
         <h1>Refund & Cancellation Policy</h1>
         <p className="text-sm text-muted-foreground">Last updated: {new Date().toLocaleDateString()}</p>
 

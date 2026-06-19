@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://maxaisocialsandbox.lovable.app/sitemap.xml

@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
+import { PageSEO } from "@/components/PageSEO";
+
 import { Link, useLocation } from "react-router-dom";
 import { ArrowLeft, ShieldCheck, ScrollText, Mail, Lock, Globe2, FileText, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -739,6 +741,12 @@ export default function Privacy() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <PageSEO
+        title="Privacy Policy"
+        description="How Maximum Social collects, uses, and protects personal data for business users and their customers."
+        path="/privacy"
+      />
+
       {/* Hero */}
       <header className="relative overflow-hidden border-b border-border/60 bg-gradient-to-b from-primary/10 via-background to-background">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,hsl(var(--primary)/0.15),transparent_60%)]" />

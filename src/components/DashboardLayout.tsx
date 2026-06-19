@@ -15,7 +15,7 @@ export function DashboardLayout({ title, children }: DashboardLayoutProps) {
         <AppSidebar />
         <div className="flex-1 flex flex-col min-w-0">
           <header className="h-14 flex items-center border-b bg-card px-4 gap-3 shrink-0">
-            <SidebarTrigger />
+            <SidebarTrigger aria-label="Toggle navigation sidebar" />
             <h1 className="text-lg font-semibold text-brand-gradient">{title}</h1>
             <div className="ml-auto">
               <NotificationBell />
