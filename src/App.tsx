@@ -46,6 +46,7 @@ const SmsCompliance = lazy(() => import("./pages/SmsCompliance.tsx"));
 const ReviewSources = lazy(() => import("./pages/ReviewSources.tsx"));
 const AiLab = lazy(() => import("./pages/AiLab.tsx"));
 const AboutDemo = lazy(() => import("./pages/AboutDemo.tsx"));
+const ReputationManagementGuide = lazy(() => import("./pages/guides/ReputationManagement.tsx"));
 
 const PageFallback = () => (
   <div className="flex min-h-screen items-center justify-center">
@@ -117,6 +118,7 @@ const App = () => (
                       <Route path="/refund-policy" element={<Refunds />} />
                       <Route path="/cancellation-policy" element={<Refunds />} />
                       <Route path="/sms-consent" element={<SmsConsent />} />
+                      <Route path="/guides/reputation-management-for-local-business" element={<ReputationManagementGuide />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </Suspense>
