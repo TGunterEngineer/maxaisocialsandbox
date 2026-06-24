@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { DashboardLayout } from "@/components/DashboardLayout";
+import { Helmet } from "react-helmet-async";
 import { DashboardStats } from "@/components/DashboardStats";
 import { RatingTrendChart } from "@/components/RatingTrendChart";
 import { ReviewCard, type Interaction } from "@/components/ReviewCard";
@@ -103,6 +104,11 @@ const Index = () => {
 
   return (
     <DashboardLayout title="Unified Inbox">
+      <Helmet>
+        <title>Unified Inbox · Reviews Dashboard | Maximum Social</title>
+        <meta name="description" content="Monitor reviews, comments, and mentions across all sources in one unified inbox." />
+        <meta name="robots" content="noindex,nofollow" />
+      </Helmet>
       <DashboardStats />
       <div className="mt-6"><A2pStatusBanner hideWhenApproved /></div>
       <div className="mt-6"><RatingTrendChart /></div>

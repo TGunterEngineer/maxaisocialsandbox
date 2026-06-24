@@ -174,7 +174,7 @@ export default function Branding() {
           <CardContent className="flex items-center gap-6">
             <div className="h-20 w-20 rounded-lg border bg-muted/30 flex items-center justify-center overflow-hidden shrink-0">
               {logoUrl ? (
-                <img src={logoUrl} alt="Logo" className="max-h-full max-w-full object-contain" />
+                <img src={logoUrl} alt="Organization logo preview" className="max-h-full max-w-full object-contain" />
               ) : (
                 <ImageIcon className="h-6 w-6 text-muted-foreground" />
               )}
