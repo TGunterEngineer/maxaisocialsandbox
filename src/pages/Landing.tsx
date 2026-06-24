@@ -214,7 +214,7 @@ export default function Landing() {
             Client login
           </Button>
         </div>
-        <p className="mt-4 text-xs text-white/40">
+        <p className="mt-4 text-xs text-white/70">
           {founderOpen ? "Cancel anytime · Founder rate never increases" : "Cancel anytime"}
         </p>
       </section>
