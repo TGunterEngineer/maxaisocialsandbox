@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { DashboardLayout } from "@/components/DashboardLayout";
+import { Helmet } from "react-helmet-async";
 import { DashboardStats } from "@/components/DashboardStats";
 import { RatingTrendChart } from "@/components/RatingTrendChart";
 import { ReviewCard, type Interaction } from "@/components/ReviewCard";
