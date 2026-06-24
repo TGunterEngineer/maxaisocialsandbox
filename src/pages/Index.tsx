@@ -104,6 +104,11 @@ const Index = () => {
 
   return (
     <DashboardLayout title="Unified Inbox">
+      <Helmet>
+        <title>Unified Inbox · Reviews Dashboard | Maximum Social</title>
+        <meta name="description" content="Monitor reviews, comments, and mentions across all sources in one unified inbox." />
+        <meta name="robots" content="noindex,nofollow" />
+      </Helmet>
       <DashboardStats />
       <div className="mt-6"><A2pStatusBanner hideWhenApproved /></div>
       <div className="mt-6"><RatingTrendChart /></div>
