@@ -192,7 +192,7 @@ export default function ContentCalendar() {
                               ? "h-6 w-6 rounded-full bg-primary text-primary-foreground"
                               : inMonth
                               ? "text-foreground"
-                              : "text-muted-foreground/50",
+                              : "text-muted-foreground",
                           )}
                         >
                           {format(day, "d")}
