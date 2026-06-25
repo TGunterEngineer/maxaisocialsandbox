@@ -190,7 +190,7 @@ export default function ReviewSources() {
                   <Label className="text-xs uppercase tracking-wide text-muted-foreground">Endpoint</Label>
                   <div className="flex items-center gap-2 mt-1">
                     <code className="flex-1 rounded bg-muted px-3 py-2 text-xs break-all">{ingestUrl}</code>
-                    <Button size="sm" variant="ghost" onClick={() => copy(ingestUrl)}><Copy className="h-3.5 w-3.5" /></Button>
+                    <Button size="sm" variant="ghost" aria-label="Copy ingest endpoint" onClick={() => copy(ingestUrl)}><Copy className="h-3.5 w-3.5" /></Button>
                   </div>
                 </div>
                 <div>
@@ -252,10 +252,10 @@ export default function ReviewSources() {
                             )}
                           </div>
                           {isJustCreated && (
-                            <Button size="sm" variant="ghost" onClick={() => copy(newlyCreatedKey!.key)}><Copy className="h-3.5 w-3.5" /></Button>
+                            <Button size="sm" variant="ghost" aria-label="Copy ingest key" onClick={() => copy(newlyCreatedKey!.key)}><Copy className="h-3.5 w-3.5" /></Button>
                           )}
                           {canManageTeam && (
-                            <Button size="sm" variant="ghost" onClick={() => revokeKey(k.id)}>
+                            <Button size="sm" variant="ghost" aria-label="Revoke ingest key" onClick={() => revokeKey(k.id)}>
                               <Trash2 className="h-3.5 w-3.5 text-destructive" />
                             </Button>
                           )}

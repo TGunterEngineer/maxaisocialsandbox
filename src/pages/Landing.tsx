@@ -123,9 +123,9 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white overflow-x-hidden">
       <PageSEO
-        title="Reputation & customer engagement for local businesses"
+        title="Reputation & Engagement for Local Business"
         description="Monitor reviews, request more 5-stars, route bad ratings privately, and grow with AI-powered SMS, email, and content campaigns."
-        path="/landing"
+        path="/"
       />
 
       {/* Background accents */}

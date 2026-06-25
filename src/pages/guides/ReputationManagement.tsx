@@ -143,6 +143,17 @@ export default function ReputationManagementGuide() {
       />
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: "Reputation Management for Local Businesses — A Complete Guide",
+          description: "Learn how local businesses can manage reviews on Google & Facebook, build trust, and turn feedback into growth.",
+          author: { "@type": "Organization", name: "Maximum Social" },
+          publisher: { "@type": "Organization", name: "Maximum Social" },
+          datePublished: "2025-01-15",
+          dateModified: "2026-06-25",
+          mainEntityOfPage: "https://maxaisocialsandbox.lovable.app/guides/reputation-management-for-local-business",
+        })}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background text-foreground">
