@@ -414,7 +414,7 @@ export default function Landing() {
         </Card>
       </section>
 
-      <footer className="border-t border-white/5 py-8 text-center text-sm text-white/40">
+      <footer className="border-t border-white/5 py-8 text-center text-sm text-white/70">
         <div>© {new Date().getFullYear()} MaximumAI Consulting. All rights reserved.</div>
         <div className="mt-2 space-x-4">
           <a href="#features" className="hover:text-white/70 underline-offset-4 hover:underline">
